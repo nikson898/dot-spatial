@@ -116,6 +116,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDR", "SDR", "{FE1B40A8-8FF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial.SDR.Go2It", "DotSpatial.SDR.Go2It\DotSpatial.SDR.Go2It.csproj", "{4025E6E5-8981-462B-BDCA-7F9E283C0B12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial.SDR.Plugins.Measure", "DotSpatial.SDR.Plugins.Measure\DotSpatial.SDR.Plugins.Measure.csproj", "{93C9C779-903D-491F-AA1F-5BE25E4F5188}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 45
@@ -751,6 +753,16 @@ Global
 		{4025E6E5-8981-462B-BDCA-7F9E283C0B12}.Release|Mixed Platforms.Build.0 = Release|x86
 		{4025E6E5-8981-462B-BDCA-7F9E283C0B12}.Release|x86.ActiveCfg = Release|x86
 		{4025E6E5-8981-462B-BDCA-7F9E283C0B12}.Release|x86.Build.0 = Release|x86
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -801,5 +813,6 @@ Global
 		{5520B6CB-3124-4B1A-A15C-DC4637F618C3} = {B1A21F91-D189-4F39-A5F2-AE1E9D72B9FF}
 		{5E5D5BF6-E7F1-4E10-9CD3-0A3CA902AD21} = {B1A21F91-D189-4F39-A5F2-AE1E9D72B9FF}
 		{4025E6E5-8981-462B-BDCA-7F9E283C0B12} = {FE1B40A8-8FFA-480E-884E-03A632448F9B}
+		{93C9C779-903D-491F-AA1F-5BE25E4F5188} = {FE1B40A8-8FFA-480E-884E-03A632448F9B}
 	EndGlobalSection
 EndGlobal
