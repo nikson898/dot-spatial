@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SimpleHeaderControl.cs" company="DotSpatial Team">
+// <copyright file="Go2ItHeaderControl.cs" company="Spatial Data Research">
 // TODO: Update copyright text.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -13,7 +13,7 @@ using DotSpatial.Controls.Header;
 namespace DotSpatial.SDR.Go2It
 {
     /// <summary>
-    /// Creates a ToolStripContainer that hosts a MenuBarHeaderControl.
+    /// Creates a ToolStripContainer that hosts a GridHeaderControl.
     /// </summary>
     [Export(typeof(IHeaderControl))]
     public class SimpleHeaderControl : GridHeaderControl, IPartImportsSatisfiedNotification
@@ -35,10 +35,10 @@ namespace DotSpatial.SDR.Go2It
             this._toolStripContainer1.ContentPanel.SuspendLayout();
             this._toolStripContainer1.SuspendLayout();
 
-            //this._toolStripContainer1.TopToolStripPanelVisible = false;
-            //this._toolStripContainer1.LeftToolStripPanelVisible = false;
-            //this._toolStripContainer1.RightToolStripPanelVisible = false;
-            //this._toolStripContainer1.BottomToolStripPanelVisible = false;
+            this._toolStripContainer1.TopToolStripPanelVisible = false;
+            this._toolStripContainer1.LeftToolStripPanelVisible = false;
+            this._toolStripContainer1.RightToolStripPanelVisible = false;
+            this._toolStripContainer1.BottomToolStripPanelVisible = false;
             this._toolStripContainer1.Dock = DockStyle.Fill;
             this._toolStripContainer1.Name = "toolStripContainer1";
 
@@ -59,8 +59,9 @@ namespace DotSpatial.SDR.Go2It
 
             // create the table layout panel for buttons now
             this._gridControlPanel1 = new GridControlPanel();
-            this._gridControlPanel1.Dock = DockStyle.Fill;
+            this._gridControlPanel1.Dock = DockStyle.Left;
             this._gridControlPanel1.Name = "gridControlContainer1";
+            this._gridControlPanel1.BackColor = Color.Firebrick;
             this._gridControlPanel1.SuspendLayout();
             this._gridControlPanel1.TableLayoutPanel.SuspendLayout();
 

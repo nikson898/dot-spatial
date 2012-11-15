@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -117,14 +118,17 @@ namespace DotSpatial.Controls.Header
             {
                 // create a tool strip and add it as a button
                 menu = new ToolStripButton(item.Caption);
-                menu.DisplayStyle = ToolStripItemDisplayStyle.Image;
+                menu.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                menu.TextImageRelation = TextImageRelation.ImageAboveText;
+                menu.ImageAlign = ContentAlignment.MiddleCenter;
                 menu.Image = item.LargeImage;
-
+                menu.Text = item.Caption;
+                menu.TextAlign = ContentAlignment.BottomCenter;
                 menu.AutoSize = false;
-                menu.Height = 40;
-                menu.Width = 50;
+                menu.Height = 50;
+                menu.Width = 55;
 
-                // we're grouping all Toggle buttons together into the same group.
+                //// we're grouping all Toggle buttons together into the same group.
                 //if (item.ToggleGroupKey != null)
                 //{
                 //    ToolStripButton button = menu as ToolStripButton;
@@ -168,8 +172,8 @@ namespace DotSpatial.Controls.Header
                         strip.GripStyle = ToolStripGripStyle.Hidden;
                         strip.Items.Add(menu);
                         strip.Dock = DockStyle.None;
-                        // add the control strip to the grid panel as well
-                        _Panel.AddControl(strip);
+                        // add the control strip to the grid panel now
+                        _Panel.AddControl(strip, item.SortOrder);
                     }
                     if (String.IsNullOrWhiteSpace(item.ToolTipText) == false)
                         menu.ToolTipText = item.ToolTipText;

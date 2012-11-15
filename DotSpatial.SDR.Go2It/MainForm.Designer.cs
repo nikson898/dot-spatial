@@ -44,14 +44,16 @@
             // vertSplitter
             // 
             this.vertSplitter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vertSplitter.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.vertSplitter.Location = new System.Drawing.Point(0, 0);
             this.vertSplitter.Name = "vertSplitter";
+            this.vertSplitter.Panel1MinSize = 55;
             // 
             // vertSplitter.Panel2
             // 
             this.vertSplitter.Panel2.Controls.Add(this.horzSplitter);
-            this.vertSplitter.Size = new System.Drawing.Size(825, 571);
-            this.vertSplitter.SplitterDistance = 215;
+            this.vertSplitter.Size = new System.Drawing.Size(735, 519);
+            this.vertSplitter.SplitterDistance = 164;
             this.vertSplitter.TabIndex = 0;
             // 
             // horzSplitter
@@ -64,8 +66,8 @@
             // horzSplitter.Panel2
             // 
             this.horzSplitter.Panel2.Controls.Add(this.map);
-            this.horzSplitter.Size = new System.Drawing.Size(606, 571);
-            this.horzSplitter.SplitterDistance = 96;
+            this.horzSplitter.Size = new System.Drawing.Size(567, 519);
+            this.horzSplitter.SplitterDistance = 87;
             this.horzSplitter.TabIndex = 0;
             // 
             // map
@@ -86,7 +88,7 @@
             this.map.ProjectionModeReproject = DotSpatial.Controls.ActionMode.Prompt;
             this.map.RedrawLayersWhileResizing = false;
             this.map.SelectionEnabled = true;
-            this.map.Size = new System.Drawing.Size(606, 471);
+            this.map.Size = new System.Drawing.Size(567, 428);
             this.map.TabIndex = 0;
             // 
             // appManager
@@ -104,7 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 571);
+            this.ClientSize = new System.Drawing.Size(735, 519);
             this.Controls.Add(this.vertSplitter);
             this.Name = "MainForm";
             this.Text = "Form1";
