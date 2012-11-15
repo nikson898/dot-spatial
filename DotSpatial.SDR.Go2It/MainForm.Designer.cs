@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.appManager = new DotSpatial.Controls.AppManager();
             this.vertSplitter = new System.Windows.Forms.SplitContainer();
             this.horzSplitter = new System.Windows.Forms.SplitContainer();
             this.map = new DotSpatial.Controls.Map();
+            this.appManager = new DotSpatial.Controls.AppManager();
             ((System.ComponentModel.ISupportInitialize)(this.vertSplitter)).BeginInit();
             this.vertSplitter.Panel2.SuspendLayout();
             this.vertSplitter.SuspendLayout();
@@ -40,17 +40,6 @@
             this.horzSplitter.Panel2.SuspendLayout();
             this.horzSplitter.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // appManager
-            // 
-            this.appManager.CompositionContainer = null;
-            this.appManager.Directories = ((System.Collections.Generic.List<string>)(resources.GetObject("appManager.Directories")));
-            this.appManager.DockManager = null;
-            this.appManager.HeaderControl = null;
-            this.appManager.Legend = null;
-            this.appManager.Map = this.map;
-            this.appManager.ProgressHandler = null;
-            this.appManager.ShowExtensionsDialog = DotSpatial.Controls.ShowExtensionsDialog.Default;
             // 
             // vertSplitter
             // 
@@ -99,6 +88,17 @@
             this.map.SelectionEnabled = true;
             this.map.Size = new System.Drawing.Size(606, 471);
             this.map.TabIndex = 0;
+            // 
+            // appManager
+            // 
+            this.appManager.CompositionContainer = null;
+            this.appManager.Directories = ((System.Collections.Generic.List<string>)(resources.GetObject("appManager.Directories")));
+            this.appManager.DockManager = null;
+            this.appManager.HeaderControl = null;
+            this.appManager.Legend = null;
+            this.appManager.Map = this.map;
+            this.appManager.ProgressHandler = null;
+            this.appManager.ShowExtensionsDialog = DotSpatial.Controls.ShowExtensionsDialog.Default;
             // 
             // MainForm
             // 

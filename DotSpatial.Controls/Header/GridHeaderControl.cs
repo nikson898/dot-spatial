@@ -20,10 +20,10 @@ namespace DotSpatial.Controls.Header
         #region Constants and Fields
 
         private const string STR_DefaultGroupName = "Default Group";
-        private GridControlContainer _Container;
+        private ToolStripContainer _Container;
+        private TableLayoutPanel _Panel;
         private MenuStrip _MenuStrip;
         private List<ToolStrip> _Strips;
-        private List<Button> _Buttons;
 
         #endregion
 
@@ -106,38 +106,38 @@ namespace DotSpatial.Controls.Header
         public override void Add(SimpleActionItem item)
         {
             ToolStripItem menu;
-            Button btn;
 
             if (IsForMenuStrip(item) || item.GroupCaption == ApplicationMenuKey)
             {
+                // add it to the menu bar
                 menu = new ToolStripMenuItem(item.Caption);
                 menu.Image = item.SmallImage;
             }
             else
             {
+                // create a tool strip and add it as a button
                 menu = new ToolStripButton(item.Caption);
                 menu.DisplayStyle = ToolStripItemDisplayStyle.Image;
-                menu.Image = item.SmallImage;
+                menu.Image = item.LargeImage;
+
+                menu.AutoSize = false;
+                menu.Height = 50;
+                menu.Width = 50;
 
                 // we're grouping all Toggle buttons together into the same group.
-                if (item.ToggleGroupKey != null)
-                {
-                    ToolStripButton button = menu as ToolStripButton;
-                    button.CheckOnClick = true;
-                    button.CheckedChanged += this.button_CheckedChanged;
+                //if (item.ToggleGroupKey != null)
+                //{
+                //    ToolStripButton button = menu as ToolStripButton;
+                //    button.CheckOnClick = true;
+                //    button.CheckedChanged += this.button_CheckedChanged;
 
-                    item.Toggling += (sender, e) =>
-                    {
-                        UncheckButtonsExcept(button);
-                        button.Checked = !button.Checked;
-                    };
-                }
+                //    item.Toggling += (sender, e) =>
+                //    {
+                //        UncheckButtonsExcept(button);
+                //        button.Checked = !button.Checked;
+                //    };
+                //}
             }
-
-            menu.Name = item.Key;
-            menu.Enabled = item.Enabled;
-            menu.Visible = item.Visible;
-            menu.Click += (sender, e) => item.OnClick(e);
 
             EnsureNonNullRoot(item);
             var root = this._MenuStrip.Items[item.RootKey] as ToolStripDropDownButton;
@@ -156,10 +156,13 @@ namespace DotSpatial.Controls.Header
                 }
                 else
                 {
+                    // find or assemble the strip that the item is attached to
                     ToolStrip strip = this.GetOrCreateStrip(item.GroupCaption);
                     if (strip != null)
                     {
+                        strip.GripStyle = ToolStripGripStyle.Hidden;
                         strip.Items.Add(menu);
+                        _Panel.Controls.Add(strip);
                     }
                     if (String.IsNullOrWhiteSpace(item.ToolTipText) == false)
                         menu.ToolTipText = item.ToolTipText;
@@ -175,7 +178,6 @@ namespace DotSpatial.Controls.Header
                     subMenu.DropDownItems.Add(menu);
                 }
             }
-
             item.PropertyChanged += SimpleActionItem_PropertyChanged;
         }
 
@@ -243,9 +245,10 @@ namespace DotSpatial.Controls.Header
         /// Initializes the specified container.
         /// </summary>
         /// <param name="container">The container.</param>
-        public void Initialize(GridControlContainer container)
+        public void Initialize(ToolStripContainer container, TableLayoutPanel panel)
         {
             this._Container = container;
+            this._Panel = panel;
 
             // create the menu strip.
             MenuStrip strip = new MenuStrip();
@@ -272,18 +275,18 @@ namespace DotSpatial.Controls.Header
         /// </remarks>
         public override void Remove(string key)
         {
-            //var item = this.GetItem(key);
-            //if (item != null)
-            //{
-            //    ToolStrip toolStrip = item.Owner;
-            //    item.Dispose();
-            //    if (toolStrip.Items.Count == 0)
-            //    {
-            //        _Strips.Remove(toolStrip);
-            //        toolStrip.Dispose();
-            //    }
-            //}
-            //base.Remove(key);
+            var item = this.GetItem(key);
+            if (item != null)
+            {
+                ToolStrip toolStrip = item.Owner;
+                item.Dispose();
+                if (toolStrip.Items.Count == 0)
+                {
+                    _Strips.Remove(toolStrip);
+                    toolStrip.Dispose();
+                }
+            }
+            base.Remove(key);
         }
 
         /// <summary>
@@ -397,10 +400,10 @@ namespace DotSpatial.Controls.Header
             ToolStrip[] strips = this._Strips.ToArray();
             this._Strips.Add(_MenuStrip);
 
-            //this._Container.TopToolStripPanel.SuspendLayout();
-            //this._Container.TopToolStripPanel.Controls.Clear();
-            //this._Container.TopToolStripPanel.Controls.AddRange(strips);
-            //this._Container.TopToolStripPanel.ResumeLayout();
+            this._Container.TopToolStripPanel.SuspendLayout();
+            this._Container.TopToolStripPanel.Controls.Clear();
+            this._Container.TopToolStripPanel.Controls.AddRange(strips);
+            this._Container.TopToolStripPanel.ResumeLayout();
 
             return strip;
         }
@@ -480,7 +483,6 @@ namespace DotSpatial.Controls.Header
                     return item;
                 }
             }
-
             return null;
         }
 

@@ -35,7 +35,7 @@ namespace DotSpatial.SDR.Go2It
         {
             InitializeComponent();
             Shell = this;
-            appManager.LoadExtensions();
+            appManager.LoadExtensions();            
         }
     }
 }

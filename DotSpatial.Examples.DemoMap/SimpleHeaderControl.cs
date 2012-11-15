@@ -33,6 +33,7 @@ namespace DemoMap
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
 
+            this.toolStripContainer1.TopToolStripPanelVisible = false;
             this.toolStripContainer1.Dock = DockStyle.Fill;
             this.toolStripContainer1.Name = "toolStripContainer1";
 

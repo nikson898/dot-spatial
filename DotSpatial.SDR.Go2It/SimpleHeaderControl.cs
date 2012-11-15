@@ -5,6 +5,7 @@
 // -----------------------------------------------------------------------
 
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using DotSpatial.Controls.Header;
@@ -15,9 +16,10 @@ namespace DotSpatial.SDR.Go2It
     /// Creates a ToolStripContainer that hosts a MenuBarHeaderControl.
     /// </summary>
     [Export(typeof(IHeaderControl))]
-    public class SimpleHeaderControl : MenuBarHeaderControl, IPartImportsSatisfiedNotification
+    public class SimpleHeaderControl : GridHeaderControl, IPartImportsSatisfiedNotification
     {
-        private ToolStripContainer toolStripContainer1;
+        private ToolStripContainer _toolStripContainer1;
+        private TableLayoutPanel _tableLayoutPanel1;
 
         [Import("Shell", typeof(ContainerControl))]
         private ContainerControl Shell { get; set; }
@@ -29,29 +31,52 @@ namespace DotSpatial.SDR.Go2It
         /// </summary>
         public void OnImportsSatisfied()
         {
-            this.toolStripContainer1 = new ToolStripContainer();
-            this.toolStripContainer1.ContentPanel.SuspendLayout();
-            this.toolStripContainer1.SuspendLayout();
+            this._toolStripContainer1 = new ToolStripContainer();
+            this._toolStripContainer1.ContentPanel.SuspendLayout();
+            this._toolStripContainer1.SuspendLayout();
 
-            this.toolStripContainer1.Dock = DockStyle.Fill;
-            this.toolStripContainer1.Name = "toolStripContainer1";
+            this._toolStripContainer1.TopToolStripPanelVisible = false;
+            this._toolStripContainer1.LeftToolStripPanelVisible = false;
+            this._toolStripContainer1.RightToolStripPanelVisible = false;
+            this._toolStripContainer1.BottomToolStripPanelVisible = false;
+            this._toolStripContainer1.Dock = DockStyle.Fill;
+            this._toolStripContainer1.Name = "toolStripContainer1";
 
             // place all of the controls that were on the form originally inside of our content panel.
             while (Shell.Controls.Count > 0)
             {
                 foreach (Control control in Shell.Controls)
                 {
-                    this.toolStripContainer1.ContentPanel.Controls.Add(control);
+                    this._toolStripContainer1.ContentPanel.Controls.Add(control);
                 }
             }
 
-            Shell.Controls.Add(this.toolStripContainer1);
+            Shell.Controls.Add(this._toolStripContainer1);
 
-            this.toolStripContainer1.ContentPanel.ResumeLayout(false);
-            this.toolStripContainer1.ResumeLayout(false);
-            this.toolStripContainer1.PerformLayout();
+            this._toolStripContainer1.ContentPanel.ResumeLayout(false);
+            this._toolStripContainer1.ResumeLayout(false);
+            this._toolStripContainer1.PerformLayout();
 
-            Initialize(toolStripContainer1);
+            // create the table layout panel for buttons now
+            this._tableLayoutPanel1 = new TableLayoutPanel();
+            this._tableLayoutPanel1.SuspendLayout();
+            this._tableLayoutPanel1.Dock = DockStyle.Fill;
+            this._tableLayoutPanel1.Name = "tableLayoutPanel1";
+
+            Shell.Controls.Add(this._tableLayoutPanel1);
+            var container = Shell.Controls.Find("vertSplitter", true)[0] as SplitContainer;
+
+            if (container != null)
+                container.Panel1.Controls.Add(this._tableLayoutPanel1);
+            else
+            {
+                Trace.WriteLine("SplitContainer was expected.");
+            }
+
+            this._tableLayoutPanel1.ResumeLayout(false);
+            this._tableLayoutPanel1.PerformLayout();
+
+            Initialize(_toolStripContainer1, _tableLayoutPanel1);
         }
 
         #endregion
