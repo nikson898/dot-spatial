@@ -72,11 +72,11 @@
     <Compile Include="Docking\IDockManager.cs" />
     <Compile Include="Header\ActionItem.cs" />
     <Compile Include="Header\DropDownActionItem.cs" />
-    <Compile Include="Header\GridControlContainer.cs">
+    <Compile Include="Header\GridControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Header\GridControlContainer.Designer.cs">
-      <DependentUpon>GridControlContainer.cs</DependentUpon>
+    <Compile Include="Header\GridControlPanel.Designer.cs">
+      <DependentUpon>GridControlPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Header\GridHeaderControl.cs" />
     <Compile Include="Header\HeaderControl.cs" />
@@ -274,8 +274,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Header\GridControlContainer.resx">
-      <DependentUpon>GridControlContainer.cs</DependentUpon>
+    <EmbeddedResource Include="Header\GridControlPanel.resx">
+      <DependentUpon>GridControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MapFrameProjectionDialog.resx">
       <DependentUpon>MapFrameProjectionDialog.cs</DependentUpon>

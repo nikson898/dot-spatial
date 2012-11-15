@@ -21,7 +21,7 @@ namespace DotSpatial.Controls.Header
 
         private const string STR_DefaultGroupName = "Default Group";
         private ToolStripContainer _Container;
-        private TableLayoutPanel _Panel;
+        private GridControlPanel _Panel;
         private MenuStrip _MenuStrip;
         private List<ToolStrip> _Strips;
 
@@ -121,7 +121,7 @@ namespace DotSpatial.Controls.Header
                 menu.Image = item.LargeImage;
 
                 menu.AutoSize = false;
-                menu.Height = 50;
+                menu.Height = 40;
                 menu.Width = 50;
 
                 // we're grouping all Toggle buttons together into the same group.
@@ -138,6 +138,11 @@ namespace DotSpatial.Controls.Header
                 //    };
                 //}
             }
+
+            menu.Name = item.Key;
+            menu.Enabled = item.Enabled;
+            menu.Visible = item.Visible;
+            menu.Click += (sender, e) => item.OnClick(e);
 
             EnsureNonNullRoot(item);
             var root = this._MenuStrip.Items[item.RootKey] as ToolStripDropDownButton;
@@ -162,7 +167,9 @@ namespace DotSpatial.Controls.Header
                     {
                         strip.GripStyle = ToolStripGripStyle.Hidden;
                         strip.Items.Add(menu);
-                        _Panel.Controls.Add(strip);
+                        strip.Dock = DockStyle.None;
+                        // add the control strip to the grid panel as well
+                        _Panel.AddControl(strip);
                     }
                     if (String.IsNullOrWhiteSpace(item.ToolTipText) == false)
                         menu.ToolTipText = item.ToolTipText;
@@ -245,7 +252,7 @@ namespace DotSpatial.Controls.Header
         /// Initializes the specified container.
         /// </summary>
         /// <param name="container">The container.</param>
-        public void Initialize(ToolStripContainer container, TableLayoutPanel panel)
+        public void Initialize(ToolStripContainer container, GridControlPanel panel)
         {
             this._Container = container;
             this._Panel = panel;

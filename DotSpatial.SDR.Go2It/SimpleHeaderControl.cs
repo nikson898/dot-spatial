@@ -19,7 +19,7 @@ namespace DotSpatial.SDR.Go2It
     public class SimpleHeaderControl : GridHeaderControl, IPartImportsSatisfiedNotification
     {
         private ToolStripContainer _toolStripContainer1;
-        private TableLayoutPanel _tableLayoutPanel1;
+        private GridControlPanel _gridControlPanel1;
 
         [Import("Shell", typeof(ContainerControl))]
         private ContainerControl Shell { get; set; }
@@ -35,10 +35,10 @@ namespace DotSpatial.SDR.Go2It
             this._toolStripContainer1.ContentPanel.SuspendLayout();
             this._toolStripContainer1.SuspendLayout();
 
-            this._toolStripContainer1.TopToolStripPanelVisible = false;
-            this._toolStripContainer1.LeftToolStripPanelVisible = false;
-            this._toolStripContainer1.RightToolStripPanelVisible = false;
-            this._toolStripContainer1.BottomToolStripPanelVisible = false;
+            //this._toolStripContainer1.TopToolStripPanelVisible = false;
+            //this._toolStripContainer1.LeftToolStripPanelVisible = false;
+            //this._toolStripContainer1.RightToolStripPanelVisible = false;
+            //this._toolStripContainer1.BottomToolStripPanelVisible = false;
             this._toolStripContainer1.Dock = DockStyle.Fill;
             this._toolStripContainer1.Name = "toolStripContainer1";
 
@@ -58,25 +58,30 @@ namespace DotSpatial.SDR.Go2It
             this._toolStripContainer1.PerformLayout();
 
             // create the table layout panel for buttons now
-            this._tableLayoutPanel1 = new TableLayoutPanel();
-            this._tableLayoutPanel1.SuspendLayout();
-            this._tableLayoutPanel1.Dock = DockStyle.Fill;
-            this._tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this._gridControlPanel1 = new GridControlPanel();
+            this._gridControlPanel1.Dock = DockStyle.Fill;
+            this._gridControlPanel1.Name = "gridControlContainer1";
+            this._gridControlPanel1.SuspendLayout();
+            this._gridControlPanel1.TableLayoutPanel.SuspendLayout();
 
-            Shell.Controls.Add(this._tableLayoutPanel1);
+            Shell.Controls.Add(this._gridControlPanel1);
+
             var container = Shell.Controls.Find("vertSplitter", true)[0] as SplitContainer;
-
             if (container != null)
-                container.Panel1.Controls.Add(this._tableLayoutPanel1);
+            {
+                container.Panel1.Controls.Add(this._gridControlPanel1);   
+            }
             else
             {
                 Trace.WriteLine("SplitContainer was expected.");
             }
 
-            this._tableLayoutPanel1.ResumeLayout(false);
-            this._tableLayoutPanel1.PerformLayout();
+            this._gridControlPanel1.ResumeLayout(false);
+            this._gridControlPanel1.TableLayoutPanel.ResumeLayout(false);
+            this._gridControlPanel1.PerformLayout();
+            this._gridControlPanel1.TableLayoutPanel.PerformLayout();
 
-            Initialize(_toolStripContainer1, _tableLayoutPanel1);
+            Initialize(_toolStripContainer1, _gridControlPanel1);
         }
 
         #endregion
