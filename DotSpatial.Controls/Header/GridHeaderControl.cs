@@ -25,7 +25,7 @@ namespace DotSpatial.Controls.Header
         private TableLayoutPanel _Panel;
         private MenuStrip _MenuStrip;
         private List<ToolStrip> _Strips;
-        private Dictionary<int, ToolStrip> _GridStrips;
+        private Dictionary<ToolStrip, int> _GridStrips;
         private SplitContainer _SplitContainer;
     
         #endregion
@@ -52,7 +52,7 @@ namespace DotSpatial.Controls.Header
             // add the menu to the form so that it appears on top of all the toolbars.
             container.Parent.Controls.Add(strip);
             // dict used for sorting all the grid panel strips
-            this._GridStrips = new Dictionary<int, ToolStrip>();
+            this._GridStrips = new Dictionary<ToolStrip, int>();
             // list for sorting all root level strips
             this._Strips = new List<ToolStrip>();
             this._Strips.Add(strip);
@@ -215,12 +215,12 @@ namespace DotSpatial.Controls.Header
                     {
                         menu.ToolTipText = item.Caption;
                     }
-                    if (_GridStrips.ContainsKey(position) || position == 0)
+                    if (_GridStrips.ContainsValue(position) || position == 0)
                     {
                         position = this.GetNewGridOrderPosition();
                     }
                     // add the strip to our sort tracking dict
-                    _GridStrips.Add(position, strip);
+                    _GridStrips.Add(strip, position);
                     RefreshGridControlOrder();
                 }
             }
@@ -309,6 +309,7 @@ namespace DotSpatial.Controls.Header
             if (item != null)
             {
                 ToolStrip toolStrip = item.Owner;
+                _GridStrips.Remove(toolStrip);
                 item.Dispose();
                 if (toolStrip.Items.Count == 0)
                 {
@@ -317,6 +318,7 @@ namespace DotSpatial.Controls.Header
                 }
             }
             base.Remove(key);
+            RefreshGridControlOrder();
         }
 
         /// <summary>
@@ -334,22 +336,21 @@ namespace DotSpatial.Controls.Header
 
         private void RefreshGridControlOrder()
         {
-            MessageBox.Show(_Panel.Controls.Count.ToString());
-            foreach (KeyValuePair<int, ToolStrip> kvPair in _GridStrips)
+            foreach (KeyValuePair<ToolStrip, int> kvPair in _GridStrips)
             {
                 //  now find the proper place on the panel to place the strip/control
                 int row = 1;
-                if (kvPair.Key > _Panel.ColumnCount)
+                if (kvPair.Value > _Panel.ColumnCount)
                 {
                     // find the proper row to place this control
-                    double drow = kvPair.Key / _Panel.ColumnCount;
+                    double drow = kvPair.Value / _Panel.ColumnCount;
                     row = (int)Math.Ceiling(drow);
                 }
                 var pos_sub = (row - 1) * _Panel.ColumnCount;
-                var column = kvPair.Key - pos_sub;
+                var column = kvPair.Value - pos_sub;
 
                 // add the control to the table now
-                this._Panel.Controls.Add(kvPair.Value, column - 1, row - 1);
+                this._Panel.Controls.Add(kvPair.Key, column - 1, row - 1);
             }
             _SplitContainer.SplitterDistance = _Panel.Width;
         }
@@ -358,7 +359,7 @@ namespace DotSpatial.Controls.Header
         {
             // determine the last slot and return it for new control
             int sortOrder = 0;
-            var list = _GridStrips.Keys.ToList();
+            var list = _GridStrips.Values.ToList();
             if (list.Count > 0)
             {
                 list.Sort();
@@ -639,6 +640,10 @@ namespace DotSpatial.Controls.Header
             }
         }
 
+        #endregion
+
+        #region ------------------- Event Handlers
+
         private void button_CheckedChanged(object sender, EventArgs e)
         {
             ToolStripButton button = sender as ToolStripButton;
@@ -647,10 +652,6 @@ namespace DotSpatial.Controls.Header
                 this.UncheckButtonsExcept(button);
             }
         }
-
-        #endregion
-
-        #region ------------------- Event Handlers
 
         private void SplitterMoved(object sender, EventArgs e)
         {

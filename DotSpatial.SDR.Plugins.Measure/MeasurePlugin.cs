@@ -11,14 +11,12 @@ namespace DotSpatial.SDR.Plugins.Measure
         #region Constants and Fields
 
         private MapFunctionMeasure _Painter;
-        private const string HomeMenuKey = HeaderControl.HomeRootItemKey;
 
         #endregion
 
         public override void Activate()
         {
-            App.HeaderControl.Add(new RootItem(HomeMenuKey, "Measure") { SortOrder = -10 });
-            App.HeaderControl.Add(new SimpleActionItem(HeaderControl.HomeRootItemKey, "Measure", MeasureTool_Click) { SortOrder = 1, GroupCaption = "Measure Tools", SmallImage = Resources.measure_16x16, LargeImage = Resources.measure_32x32 });
+            App.HeaderControl.Add(new SimpleActionItem(HeaderControl.HomeRootItemKey, "Measure", MeasureTool_Click) { GroupCaption = "Measure Tools", SmallImage = Resources.measure_16x16, LargeImage = Resources.measure_32x32 });
             base.Activate();
         }
 

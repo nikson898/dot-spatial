@@ -57,7 +57,7 @@ namespace DotSpatial.SDR.Plugins.Navigate
         protected void AddHeaderRootItems()
         {
             // App.HeaderControl.Add(new RootItem(FileMenuKey, MessageStrings.File) { SortOrder = -20 });
-            App.HeaderControl.Add(new RootItem(HomeMenuKey, MessageStrings.Home) { SortOrder = -10 });
+            // App.HeaderControl.Add(new RootItem(HomeMenuKey, MessageStrings.Home) { SortOrder = -10 });
         }
 
         private static void ShowSaveAsError(string fileName)
