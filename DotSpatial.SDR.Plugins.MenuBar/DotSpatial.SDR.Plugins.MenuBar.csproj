@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{50C299D3-16FE-4537-A3D4-99C5EA3ADFDF}</ProjectGuid>
+    <ProjectGuid>{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotSpatial.SDR.Plugins.Selection</RootNamespace>
-    <AssemblyName>DotSpatial.SDR.Plugins.Selection</AssemblyName>
+    <RootNamespace>DotSpatial.SDR.Plugins.MenuBar</RootNamespace>
+    <AssemblyName>DotSpatial.SDR.Plugins.MenuBar</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -69,7 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SelectionPlugin.cs" />
+    <Compile Include="MenuBarPlugin.cs" />
     <Compile Include="MessageStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

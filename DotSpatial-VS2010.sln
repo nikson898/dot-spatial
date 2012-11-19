@@ -122,6 +122,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial.SDR.Plugins.Navi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial.SDR.Plugins.Selection", "DotSpatial.SDR.Plugins.Selection\DotSpatial.SDR.Plugins.Selection.csproj", "{50C299D3-16FE-4537-A3D4-99C5EA3ADFDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial.SDR.Plugins.MenuBar", "DotSpatial.SDR.Plugins.MenuBar\DotSpatial.SDR.Plugins.MenuBar.csproj", "{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 45
@@ -787,6 +789,16 @@ Global
 		{50C299D3-16FE-4537-A3D4-99C5EA3ADFDF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{50C299D3-16FE-4537-A3D4-99C5EA3ADFDF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{50C299D3-16FE-4537-A3D4-99C5EA3ADFDF}.Release|x86.ActiveCfg = Release|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -840,5 +852,6 @@ Global
 		{93C9C779-903D-491F-AA1F-5BE25E4F5188} = {FE1B40A8-8FFA-480E-884E-03A632448F9B}
 		{7487EA28-0BE6-4632-A150-6AA981F88F02} = {FE1B40A8-8FFA-480E-884E-03A632448F9B}
 		{50C299D3-16FE-4537-A3D4-99C5EA3ADFDF} = {FE1B40A8-8FFA-480E-884E-03A632448F9B}
+		{C3F938AA-A751-4209-8CD2-A0B6D4BA781F} = {FE1B40A8-8FFA-480E-884E-03A632448F9B}
 	EndGlobalSection
 EndGlobal
