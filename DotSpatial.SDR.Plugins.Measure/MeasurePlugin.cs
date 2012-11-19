@@ -16,7 +16,7 @@ namespace DotSpatial.SDR.Plugins.Measure
 
         public override void Activate()
         {
-            App.HeaderControl.Add(new SimpleActionItem(HeaderControl.HomeRootItemKey, "Measure", MeasureTool_Click) { GroupCaption = "Measure Tools", SmallImage = Resources.measure_16x16, LargeImage = Resources.measure_32x32 });
+            App.HeaderControl.Add(new SimpleActionItem(HeaderControl.HomeRootItemKey, "Measure", MeasureTool_Click) { GroupCaption = "Measure", SmallImage = Resources.measure_16x16, LargeImage = Resources.measure_32x32 });
             base.Activate();
         }
 

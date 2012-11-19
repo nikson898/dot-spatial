@@ -157,9 +157,9 @@ namespace DotSpatial.Controls.Header
                 menu.TextAlign = ContentAlignment.BottomCenter;
                 menu.AutoSize = false;
                 menu.Height = 50;
-                menu.Width = 55;
+                menu.Width = 60;
 
-                // we're grouping all Toggle buttons together into the same group.
+                //  we're grouping all Toggle buttons together into the same group.
                 //if (item.ToggleGroupKey != null)
                 //{
                 //    ToolStripButton button = menu as ToolStripButton;
@@ -349,7 +349,6 @@ namespace DotSpatial.Controls.Header
                 var pos_sub = (row - 1) * _Panel.ColumnCount;
                 var column = kvPair.Value - pos_sub;
 
-                // add the control to the table now
                 this._Panel.Controls.Add(kvPair.Key, column - 1, row - 1);
             }
             _SplitContainer.SplitterDistance = _Panel.Width;
