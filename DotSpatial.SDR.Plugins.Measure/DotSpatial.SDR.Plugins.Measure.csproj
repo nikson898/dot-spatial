@@ -109,9 +109,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="package.nuspec">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Resources\measure_16x16.png" />
   </ItemGroup>
   <ItemGroup>

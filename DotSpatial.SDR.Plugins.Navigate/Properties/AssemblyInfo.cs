@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DotSpatial.SDR.Plugins.Zoom")]
-[assembly: AssemblyDescription("Standard set of icons and tools for zoom operations on a map")]
+[assembly: AssemblyTitle("DotSpatial.SDR.Plugins.Navigate")]
+[assembly: AssemblyDescription("Basic map navigation controls")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Spatial Data Research")]
-[assembly: AssemblyProduct("DotSpatial.SDR.Plugins.Zoom")]
-[assembly: AssemblyCopyright("Copyright ©  SDR inc. 2012")]
+[assembly: AssemblyCompany("Spatial Data Research Inc.")]
+[assembly: AssemblyProduct("DotSpatial.SDR.Plugins.Navigate")]
+[assembly: AssemblyCopyright("Copyright © SDR Inc. 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("C6ACE4CF-B28F-4EC2-A5E6-C73F31A25EA9")]
+[assembly: Guid("30970986-4DA8-4231-9224-EBB42B9D37C6")]
 
 // Version information for an assembly consists of the following four values:
 //

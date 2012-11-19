@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DotSpatial.SDR.Plugins.Zoom.Properties {
+namespace DotSpatial.SDR.Plugins.Navigate.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace DotSpatial.SDR.Plugins.Zoom.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DotSpatial.SDR.Plugins.Zoom.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DotSpatial.SDR.Plugins.Navigate.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

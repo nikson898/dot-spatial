@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DotSpatial.SDR.Go2It")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Go2It Mapping Software")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Spatial Data Research Inc.")]
 [assembly: AssemblyProduct("DotSpatial.SDR.Go2It")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright("Copyright ©  SDR Inc. 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b307021f-28a1-4aa1-abda-0667184d4bbf")]
+[assembly: Guid("F13B69CA-1ACB-4A11-A773-16346310A48E")]
 
 // Version information for an assembly consists of the following four values:
 //

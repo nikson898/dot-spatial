@@ -22,13 +22,44 @@ namespace DotSpatial.Controls.Header
 
         private const string STR_DefaultGroupName = "Default Group";
         private ToolStripContainer _Container;
-        private GridControlPanel _Panel;
+        private TableLayoutPanel _Panel;
         private MenuStrip _MenuStrip;
         private List<ToolStrip> _Strips;
-
+        private Dictionary<int, ToolStrip> _GridStrips;
+        private SplitContainer _SplitContainer;
+    
         #endregion
 
         #region Constructor
+
+        /// <summary>
+        /// Initializes the specified container.
+        /// </summary>
+        /// <param name="container">The container.</param>
+        public void Initialize(ToolStripContainer container, TableLayoutPanel panel)
+        {
+            this._Container = container;
+            this._Panel = panel;
+            this._SplitContainer = (SplitContainer)panel.Parent.Controls.Owner.Parent;
+            this._SplitContainer.SplitterMoved += SplitterMoved;
+            this._SplitContainer.SplitterMoving += SplitterMoving;
+
+            // create the menu strip.
+            MenuStrip strip = new MenuStrip();
+            strip.Name = STR_DefaultGroupName;
+            strip.Dock = DockStyle.Top;
+
+            // add the menu to the form so that it appears on top of all the toolbars.
+            container.Parent.Controls.Add(strip);
+            // dict used for sorting all the grid panel strips
+            this._GridStrips = new Dictionary<int, ToolStrip>();
+            // list for sorting all root level strips
+            this._Strips = new List<ToolStrip>();
+            this._Strips.Add(strip);
+            this._MenuStrip = strip;
+
+            this._MenuStrip.ItemClicked += MenuStrip_ItemClicked;
+        }
 
         #endregion
 
@@ -128,7 +159,7 @@ namespace DotSpatial.Controls.Header
                 menu.Height = 50;
                 menu.Width = 55;
 
-                //// we're grouping all Toggle buttons together into the same group.
+                // we're grouping all Toggle buttons together into the same group.
                 //if (item.ToggleGroupKey != null)
                 //{
                 //    ToolStripButton button = menu as ToolStripButton;
@@ -166,19 +197,31 @@ namespace DotSpatial.Controls.Header
                 else
                 {
                     // find or assemble the strip that the item is attached to
+                    int position = item.SortOrder;
                     ToolStrip strip = this.GetOrCreateStrip(item.GroupCaption);
                     if (strip != null)
                     {
+                        strip.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
                         strip.GripStyle = ToolStripGripStyle.Hidden;
                         strip.Items.Add(menu);
                         strip.Dock = DockStyle.None;
-                        // add the control strip to the grid panel now
-                        _Panel.AddControl(strip, item.SortOrder);
+                        strip.Items.Add(menu);
                     }
                     if (String.IsNullOrWhiteSpace(item.ToolTipText) == false)
+                    {
                         menu.ToolTipText = item.ToolTipText;
+                    }
                     else
+                    {
                         menu.ToolTipText = item.Caption;
+                    }
+                    if (_GridStrips.ContainsKey(position) || position == 0)
+                    {
+                        position = this.GetNewGridOrderPosition();
+                    }
+                    // add the strip to our sort tracking dict
+                    _GridStrips.Add(position, strip);
+                    RefreshGridControlOrder();
                 }
             }
             else
@@ -253,30 +296,6 @@ namespace DotSpatial.Controls.Header
         }
 
         /// <summary>
-        /// Initializes the specified container.
-        /// </summary>
-        /// <param name="container">The container.</param>
-        public void Initialize(ToolStripContainer container, GridControlPanel panel)
-        {
-            this._Container = container;
-            this._Panel = panel;
-
-            // create the menu strip.
-            MenuStrip strip = new MenuStrip();
-            strip.Name = STR_DefaultGroupName;
-            strip.Dock = DockStyle.Top;
-
-            // add the menu to the form so that it appears on top of all the toolbars.
-            container.Parent.Controls.Add(strip);
-
-            this._Strips = new List<ToolStrip>();
-            this._Strips.Add(strip);
-            this._MenuStrip = strip;
-
-            this._MenuStrip.ItemClicked += MenuStrip_ItemClicked;
-        }
-
-        /// <summary>
         /// Remove item from the standard toolbar or ribbon control
         /// </summary>
         /// <param name="key">
@@ -312,6 +331,42 @@ namespace DotSpatial.Controls.Header
         #endregion
 
         #region Methods
+
+        private void RefreshGridControlOrder()
+        {
+            MessageBox.Show(_Panel.Controls.Count.ToString());
+            foreach (KeyValuePair<int, ToolStrip> kvPair in _GridStrips)
+            {
+                //  now find the proper place on the panel to place the strip/control
+                int row = 1;
+                if (kvPair.Key > _Panel.ColumnCount)
+                {
+                    // find the proper row to place this control
+                    double drow = kvPair.Key / _Panel.ColumnCount;
+                    row = (int)Math.Ceiling(drow);
+                }
+                var pos_sub = (row - 1) * _Panel.ColumnCount;
+                var column = kvPair.Key - pos_sub;
+
+                // add the control to the table now
+                this._Panel.Controls.Add(kvPair.Value, column - 1, row - 1);
+            }
+            _SplitContainer.SplitterDistance = _Panel.Width;
+        }
+
+        private int GetNewGridOrderPosition()
+        {
+            // determine the last slot and return it for new control
+            int sortOrder = 0;
+            var list = _GridStrips.Keys.ToList();
+            if (list.Count > 0)
+            {
+                list.Sort();
+                sortOrder = list[list.Count -1];
+                sortOrder++;
+            }
+            return sortOrder;
+        }
 
         /// <summary>
         /// Determines whether [is for tool strip]  being that it has an icon. Otherwise it should go on a menu.
@@ -594,5 +649,20 @@ namespace DotSpatial.Controls.Header
         }
 
         #endregion
+
+        #region ------------------- Event Handlers
+
+        private void SplitterMoved(object sender, EventArgs e)
+        {
+            var d = "lsidkahgl";
+        }
+
+        private void SplitterMoving(object sender, EventArgs e)
+        {
+            var f = "5239879";
+        }
+
+        #endregion
+
     }
 }

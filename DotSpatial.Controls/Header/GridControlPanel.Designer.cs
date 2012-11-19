@@ -1,6 +1,6 @@
 ﻿namespace DotSpatial.Controls.Header
 {
-    partial class GridControlPanel
+    partial class _gridControlPanel
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,32 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this._tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // _tableLayoutPanel
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(0, 0);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this._tableLayoutPanel.AutoSize = true;
+            this._tableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._tableLayoutPanel.ColumnCount = 3;
+            this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this._tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this._tableLayoutPanel.Name = "_tableLayoutPanel";
+            this._tableLayoutPanel.RowCount = 1;
+            this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanel.Size = new System.Drawing.Size(40, 0);
+            this._tableLayoutPanel.TabIndex = 0;
             // 
-            // GridControlPanel
+            // _gridControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "GridControlPanel";
-            this.Size = new System.Drawing.Size(0, 0);
+            this.Controls.Add(this._tableLayoutPanel);
+            this.Name = "_gridControlPanel";
+            this.Size = new System.Drawing.Size(40, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -61,7 +63,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel;
 
     }
 }

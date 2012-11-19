@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B21B7DDD-455E-4049-B68D-420182783569}</ProjectGuid>
+    <ProjectGuid>{7487EA28-0BE6-4632-A150-6AA981F88F02}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotSpatial.SDR.Plugins.Zoom</RootNamespace>
-    <AssemblyName>DotSpatial.SDR.Plugins.Zoom</AssemblyName>
+    <RootNamespace>DotSpatial.SDR.Plugins.Navigate</RootNamespace>
+    <AssemblyName>DotSpatial.SDR.Plugins.Navigate</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -69,7 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuBarPlugin.cs" />
+    <Compile Include="NavigatePlugin.cs" />
     <Compile Include="MessageStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,7 +124,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="credits.txt" />
     <Content Include="Resources\deselect_16x16.png" />
     <Content Include="Resources\deselect_32x32.png" />
     <Content Include="Resources\disk_16x16.png" />
@@ -141,10 +140,6 @@
     <Content Include="Resources\layer_remove_32x32.png" />
     <Content Include="Resources\layer_save_16x16.png" />
     <Content Include="Resources\layer_save_32x32.png" />
-    <None Include="app.config" />
-    <None Include="DotSpatial.Plugins.MenuBar.nuspec">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

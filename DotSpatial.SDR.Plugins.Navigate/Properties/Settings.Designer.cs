@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DotSpatial.SDR.Plugins.Zoom.Properties {
+namespace DotSpatial.SDR.Plugins.Navigate.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
