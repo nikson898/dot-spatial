@@ -19,12 +19,15 @@
 
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace DotSpatial.SDR.Go2It
 {
     internal static class Program
     {
+        // private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -34,6 +37,7 @@ namespace DotSpatial.SDR.Go2It
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // need to load up and configuration stuff saved to the config
             Application.Run(new MainForm());
         }
     }
