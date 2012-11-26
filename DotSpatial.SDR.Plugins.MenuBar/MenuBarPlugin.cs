@@ -32,6 +32,7 @@ namespace DotSpatial.SDR.Plugins.MenuBar
         {
             IHeaderControl header = App.HeaderControl;
             header.Add(new RootItem(FileMenuKey, MessageStrings.File) { SortOrder = -20 });
+            header.Add(new SimpleActionItem(FileMenuKey, Msg.File_Open, OpenProject_Click) { GroupCaption = HeaderControl.ApplicationMenuKey, SortOrder = 10, SmallImage = Resources.folder_16x16, LargeImage = Resources.folder_32x32 });
             header.Add(new SimpleActionItem(FileMenuKey, Msg.File_Print, PrintLayout_Click) { GroupCaption = HeaderControl.ApplicationMenuKey, SortOrder = 40, SmallImage = Resources.printer_16x16, LargeImage = Resources.printer_32x32 });
             header.Add(new SimpleActionItem(FileMenuKey, Msg.File_Reset_Layout, ResetLayout_Click) { GroupCaption = HeaderControl.ApplicationMenuKey, SortOrder = 200, SmallImage = Resources.layout_delete_16x16, LargeImage = Resources.layout_delete_32x32 });
             header.Add(new SimpleActionItem(FileMenuKey, Msg.File_Exit, Exit_Click) { GroupCaption = HeaderControl.ApplicationMenuKey, SortOrder = 5000, });
@@ -51,6 +52,37 @@ namespace DotSpatial.SDR.Plugins.MenuBar
         private void Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void OpenProject_Click(object sender, EventArgs e)
+        {
+            using (var dlg = new OpenFileDialog())
+            {
+                dlg.Filter = App.SerializationManager.OpenDialogFilterText;
+                if (dlg.ShowDialog() != DialogResult.OK)
+                    return;
+                try
+                {
+                    //use the AppManager.SerializationManager to open the project
+                    App.SerializationManager.OpenProject(dlg.FileName);
+                    App.Map.Invalidate();
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show(String.Format(Resources.CouldNotOpenTheSpecifiedMapFile, dlg.FileName), Resources.Error,
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (XmlException)
+                {
+                    MessageBox.Show(String.Format(Resources.FailedToReadTheSpecifiedMapFile, dlg.FileName), Resources.Error,
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show(String.Format(Resources.FailedToReadAPortionOfTheSpecifiedMapFile, dlg.FileName), Resources.Error,
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         /// <summary>

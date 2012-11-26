@@ -68,7 +68,7 @@ namespace DotSpatial.SDR.Go2It
             this._tableLayoutPanel1.GrowStyle = TableLayoutPanelGrowStyle.AddRows;
             this._tableLayoutPanel1.Dock = DockStyle.Left;
             this._tableLayoutPanel1.Name = "gridControlContainer1";
-            this._tableLayoutPanel1.BackColor = Color.Firebrick;
+            // this._tableLayoutPanel1.BackColor = Color.Firebrick;
             this._tableLayoutPanel1.Location = new Point(0, 0);
             this._tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize, 100F));
 

@@ -37,7 +37,7 @@ namespace DotSpatial.SDR.Go2It
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // need to load up and configuration stuff saved to the config
+
             Application.Run(new MainForm());
         }
     }

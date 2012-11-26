@@ -654,12 +654,12 @@ namespace DotSpatial.Controls.Header
 
         private void SplitterMoved(object sender, EventArgs e)
         {
-            var d = "lsidkahgl";
+
         }
 
         private void SplitterMoving(object sender, EventArgs e)
         {
-            var f = "5239879";
+
         }
 
         #endregion
