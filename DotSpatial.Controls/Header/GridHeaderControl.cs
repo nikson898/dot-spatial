@@ -27,7 +27,10 @@ namespace DotSpatial.Controls.Header
         private List<ToolStrip> _Strips;
         private Dictionary<ToolStrip, int> _GridStrips;
         private SplitContainer _SplitContainer;
-    
+        private int _SplitterDistance;
+        // invalidation flag to only invalidate onmoved if a user moved the splitter
+        private bool _SplitterInvalidate = false;
+
         #endregion
 
         #region Constructor
@@ -41,8 +44,11 @@ namespace DotSpatial.Controls.Header
             this._Container = container;
             this._Panel = panel;
             this._SplitContainer = (SplitContainer)panel.Parent.Controls.Owner.Parent;
-            this._SplitContainer.SplitterMoved += SplitterMoved;
-            this._SplitContainer.SplitterMoving += SplitterMoving;
+            this._SplitContainer.SplitterMoved += Splitter_Moved;
+            this._SplitContainer.SplitterMoving += Splitter_Moving;
+            this._SplitContainer.DoubleClick += Splitter_DoubleClick;
+            this._SplitContainer.Paint += Splitter_Paint;
+            this._SplitterDistance = this._SplitContainer.SplitterDistance;
 
             // create the menu strip.
             MenuStrip strip = new MenuStrip();
@@ -123,7 +129,6 @@ namespace DotSpatial.Controls.Header
                 root.Text = item.Caption;
                 root.MergeIndex = item.SortOrder;
             }
-
             RefreshRootItemOrder();
         }
 
@@ -220,7 +225,7 @@ namespace DotSpatial.Controls.Header
                         position = this.GetNewGridOrderPosition();
                     }
                     // add the strip to our sort tracking dict
-                    _GridStrips.Add(strip, position);
+                    if (strip != null) _GridStrips.Add(strip, position);
                     RefreshGridControlOrder();
                 }
             }
@@ -333,6 +338,42 @@ namespace DotSpatial.Controls.Header
         #endregion
 
         #region Methods
+
+        private void paintSplitterDots(SplitContainer sc, PaintEventArgs e)
+        {
+            var control = sc;
+            // paint the three dots'
+            Point[] points = new Point[3];
+            var w = control.Width;
+            var h = control.Height;
+            var d = control.SplitterDistance;
+            var sW = control.SplitterWidth;
+
+            //calculate the position of the points'
+            if (control.Orientation == Orientation.Horizontal)
+            {
+                points[0] = new Point((w / 2), d + (sW / 2));
+                points[1] = new Point(points[0].X - 10, points[0].Y);
+                points[2] = new Point(points[0].X + 10, points[0].Y);
+            }
+            else
+            {
+                points[0] = new Point(d + (sW / 2), (h / 2));
+                points[1] = new Point(points[0].X, points[0].Y - 10);
+                points[2] = new Point(points[0].X, points[0].Y + 10);
+            }
+
+            foreach (Point p in points)
+            {
+                p.Offset(-2, -2);
+                e.Graphics.FillEllipse(SystemBrushes.ControlDark,
+                    new Rectangle(p, new Size(3, 3)));
+
+                p.Offset(1, 1);
+                e.Graphics.FillEllipse(SystemBrushes.ControlLight,
+                    new Rectangle(p, new Size(3, 3)));
+            }
+        }
 
         private void RefreshGridControlOrder()
         {
@@ -577,16 +618,13 @@ namespace DotSpatial.Controls.Header
                 case "SmallImage":
                     guiItem.Image = item.SmallImage;
                     break;
-
                 case "LargeImage":
                     guiItem.Image = item.LargeImage;
                     break;
-
                 case "MenuContainerKey":
                     break;
                 case "ToggleGroupKey":
                     break;
-
                 default:
                     ActionItem_PropertyChanged(item, e);
                     break;
@@ -603,11 +641,9 @@ namespace DotSpatial.Controls.Header
                 case "Width":
                     guiItem.Width = item.Width;
                     break;
-
                 case "Text":
                     guiItem.Text = item.Text;
                     break;
-
                 default:
                     ActionItem_PropertyChanged(item, e);
                     break;
@@ -652,14 +688,59 @@ namespace DotSpatial.Controls.Header
             }
         }
 
-        private void SplitterMoved(object sender, EventArgs e)
-        {
 
+        private void Splitter_Paint(object sender, PaintEventArgs e)
+        {
+            paintSplitterDots((SplitContainer)sender, e);
         }
 
-        private void SplitterMoving(object sender, EventArgs e)
+        private void Splitter_Moved(object sender, EventArgs e)
         {
+            if (this._SplitterInvalidate)
+            {
+                var sc = (SplitContainer)sender;
+                var btn = sc.Panel1.Controls[0].Controls[0];  // grab a single control button
+                int btnWidth = btn.Width;
+                int splitDist = sc.SplitterDistance;
+                double dcolCount = splitDist / btnWidth;
+                int colCount = (int)Math.Round(dcolCount);
 
+                if (splitDist % btnWidth != 0)
+                {
+                    int dist = colCount * btnWidth;
+                    sc.SplitterDistance = dist;
+                }
+                else
+                {
+                    this._SplitterDistance = sc.SplitterDistance;
+                    this._Panel.ColumnCount = colCount;
+                    this._SplitterInvalidate = false;
+                    RefreshGridControlOrder();
+                }
+            }
+        }
+
+        private void Splitter_Moving(object sender, EventArgs e)
+        {
+            // simple flag to only do the splitter invalidation after
+            // a user has moved the splitter, ignores load events etc.
+            this._SplitterInvalidate = true;
+        }
+
+        private void Splitter_DoubleClick(object sender, EventArgs e)
+        {
+            SplitContainer sc = (SplitContainer)sender;
+            int dist = sc.SplitterDistance;
+
+            if (dist != 0)
+            {
+                this._SplitterDistance = dist;
+                sc.SplitterDistance = 0;
+            }
+            else
+            {
+                sc.SplitterDistance = this._SplitterDistance;
+            }
         }
 
         #endregion

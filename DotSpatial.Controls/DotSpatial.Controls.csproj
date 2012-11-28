@@ -48,6 +48,46 @@
     <AssemblyOriginatorKeyFile>DotSpatial.Controls.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotSpatial.Data, Version=0.11.9.6, Culture=neutral, PublicKeyToken=c29dbf30e059ca9d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Data.Forms, Version=0.11.9.6, Culture=neutral, PublicKeyToken=53ab5a198378d4c1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Data.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4d9e49339a7d240c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Modeling.Forms, Version=0.11.9.6, Culture=neutral, PublicKeyToken=712bef29a31a9354, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Modeling.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Projections, Version=0.11.9.6, Culture=neutral, PublicKeyToken=272632bddd08a38b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Projections.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Projections.Forms, Version=0.11.9.6, Culture=neutral, PublicKeyToken=52099474f11b7ff0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Projections.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Serialization, Version=0.11.9.6, Culture=neutral, PublicKeyToken=441f200f827611e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology, Version=0.11.9.6, Culture=neutral, PublicKeyToken=6178c08da7998387, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Symbology.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology.Forms, Version=0.11.9.6, Culture=neutral, PublicKeyToken=0544cdeefb662382, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Symbology.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Topology, Version=0.11.9.6, Culture=neutral, PublicKeyToken=a66b5e9434ca3671, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\DotSpatial.Topology.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -430,58 +470,6 @@
     <None Include="Resources\ZoomFullView.png" />
     <None Include="Resources\ZoomInMap.png" />
     <None Include="Resources\ZoomOutMap.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DotSpatial.Data.Forms\DotSpatial.Data.Forms.csproj">
-      <Project>{7B7195E7-C20E-49B9-9CB0-4F451A2463B6}</Project>
-      <Name>DotSpatial.Data.Forms</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DotSpatial.Data\DotSpatial.Data.csproj">
-      <Project>{C1018695-3401-47A9-B195-ABD3A20C2489}</Project>
-      <Name>DotSpatial.Data</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DotSpatial.Extensions\DotSpatial.Extensions.csproj">
-      <Project>{9108B04D-A3DE-4981-B66F-496078D462FE}</Project>
-      <Name>DotSpatial.Extensions</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DotSpatial.Modeling.Forms\DotSpatial.Modeling.Forms.csproj">
-      <Project>{7ED7B00D-56EE-47CF-AAA5-34A09E40A566}</Project>
-      <Name>DotSpatial.Modeling.Forms</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DotSpatial.Projections.Forms\DotSpatial.Projections.Forms.csproj">
-      <Project>{1DA244CE-5862-4DFB-8943-244A80B7E3EE}</Project>
-      <Name>DotSpatial.Projections.Forms</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DotSpatial.Projections\DotSpatial.Projections.csproj">
-      <Project>{D286DF06-21FA-40BE-B384-6ACA509AC98C}</Project>
-      <Name>DotSpatial.Projections</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DotSpatial.Serialization\DotSpatial.Serialization.csproj">
-      <Project>{9B692E11-0273-4331-9B15-1670093EDDBF}</Project>
-      <Name>DotSpatial.Serialization</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DotSpatial.Symbology.Forms\DotSpatial.Symbology.Forms.csproj">
-      <Project>{97EDE2AD-90D0-44B6-ADB6-AD20052C0B6F}</Project>
-      <Name>DotSpatial.Symbology.Forms</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DotSpatial.Symbology\DotSpatial.Symbology.csproj">
-      <Project>{21C1D7A7-E8E5-4590-A921-2287AD43CB98}</Project>
-      <Name>DotSpatial.Symbology</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DotSpatial.Topology\DotSpatial.Topology.csproj">
-      <Project>{A8079861-C636-4ECE-99C1-AD313276787B}</Project>
-      <Name>DotSpatial.Topology</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\down.png" />

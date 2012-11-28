@@ -112,6 +112,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D2D76B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSpatial.Plugins.SimpleLegend", "DotSpatial.Plugins.Legend\DotSpatial.Plugins.SimpleLegend.csproj", "{D85281B4-6012-42A0-A8F1-B29068A3F433}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Go2It", "..\Products\Go2It\Go2It.csproj", "{ABF4CE56-E282-42CD-B5AF-91487517944D}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 45
@@ -737,6 +739,16 @@ Global
 		{D85281B4-6012-42A0-A8F1-B29068A3F433}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D85281B4-6012-42A0-A8F1-B29068A3F433}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D85281B4-6012-42A0-A8F1-B29068A3F433}.Release|x86.ActiveCfg = Release|Any CPU
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Debug|x86.ActiveCfg = Debug|x86
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Debug|x86.Build.0 = Debug|x86
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Release|Any CPU.ActiveCfg = Release|x86
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Release|Mixed Platforms.Build.0 = Release|x86
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Release|x86.ActiveCfg = Release|x86
+		{ABF4CE56-E282-42CD-B5AF-91487517944D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
