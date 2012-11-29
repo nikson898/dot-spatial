@@ -21,7 +21,7 @@ namespace DotSpatial.Controls.Header
         #region Constants and Fields
 
         private const string STR_DefaultGroupName = "Default Group";
-        private ToolStripContainer _Container;
+        // private ToolStripContainer _Container;
         private TableLayoutPanel _Panel;
         private MenuStrip _MenuStrip;
         private List<ToolStrip> _Strips;
@@ -39,9 +39,8 @@ namespace DotSpatial.Controls.Header
         /// Initializes the specified container.
         /// </summary>
         /// <param name="container">The container.</param>
-        public void Initialize(ToolStripContainer container, TableLayoutPanel panel)
+        public void Initialize(TableLayoutPanel panel)
         {
-            this._Container = container;
             this._Panel = panel;
             this._SplitContainer = (SplitContainer)panel.Parent.Controls.Owner.Parent;
             this._SplitContainer.SplitterMoved += Splitter_Moved;
@@ -56,7 +55,7 @@ namespace DotSpatial.Controls.Header
             strip.Dock = DockStyle.Top;
 
             // add the menu to the form so that it appears on top of all the toolbars.
-            container.Parent.Controls.Add(strip);
+            _SplitContainer.Parent.Controls.Add(strip);
             // dict used for sorting all the grid panel strips
             this._GridStrips = new Dictionary<ToolStrip, int>();
             // list for sorting all root level strips
@@ -339,7 +338,7 @@ namespace DotSpatial.Controls.Header
 
         #region Methods
 
-        private void paintSplitterDots(SplitContainer sc, PaintEventArgs e)
+        private static void PaintSplitterDots(SplitContainer sc, PaintEventArgs e)
         {
             var control = sc;
             // paint the three dots'
@@ -506,11 +505,7 @@ namespace DotSpatial.Controls.Header
             this._Strips.Remove(_MenuStrip);
             ToolStrip[] strips = this._Strips.ToArray();
             this._Strips.Add(_MenuStrip);
-
-            this._Container.TopToolStripPanel.SuspendLayout();
-            this._Container.TopToolStripPanel.Controls.Clear();
-            this._Container.TopToolStripPanel.Controls.AddRange(strips);
-            this._Container.TopToolStripPanel.ResumeLayout();
+            this._Strips.AddRange(strips);
 
             return strip;
         }
@@ -691,7 +686,7 @@ namespace DotSpatial.Controls.Header
 
         private void Splitter_Paint(object sender, PaintEventArgs e)
         {
-            paintSplitterDots((SplitContainer)sender, e);
+            PaintSplitterDots((SplitContainer)sender, e);
         }
 
         private void Splitter_Moved(object sender, EventArgs e)
