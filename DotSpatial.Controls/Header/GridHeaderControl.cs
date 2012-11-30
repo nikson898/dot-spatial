@@ -21,7 +21,6 @@ namespace DotSpatial.Controls.Header
         #region Constants and Fields
 
         private const string STR_DefaultGroupName = "Default Group";
-        // private ToolStripContainer _Container;
         private TableLayoutPanel _Panel;
         private MenuStrip _MenuStrip;
         private List<ToolStrip> _Strips;
